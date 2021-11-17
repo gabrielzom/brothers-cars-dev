@@ -1,4 +1,7 @@
 //Destacando a nav Catalogo
+
+// VARIÁVEIS DE CONTROLE 
+
 const activeNav = document.querySelectorAll(".nav-link")[1];
 activeNav.style.filter = " brightness(100%)";
 

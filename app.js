@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 9090
 const path = require('path')
 
 const methodOverride = require('method-override')
@@ -14,6 +13,7 @@ const continuesCreateCarro = require('./controllers/continuesCreateCarro')
 const completeCreateCarro = require('./controllers/completeCreateCarro')
 const userLogin = require('./controllers/userLogin')
 
+const uploadCarro = require('./modules/uploadCarro')
 const upload = require('./modules/upload')
 const loadEstadosAndCidades = require('./modules/loadEstadosAndCidades')
 const loadAnos = require('./modules/loadAnos')
@@ -66,12 +66,12 @@ app.get('/myCars', (req, res) => {
 
 app.post('/catalogo', readCarroIndex)
 app.post('/catalogoBuscar', readCarroCatalogo)
-app.post('/incluircarro', createCarro)
+app.post('/incluircarro', uploadCarro.array('fotoCarro', 3), createCarro)
 
 app.post('/entrar', userLogin)
 
 
-app.put('/:id', continuesCreateCarro)
+app.put('/:id', uploadCarro.array('fotoCarro', 3), continuesCreateCarro)
 app.put('/finaliza/:id', completeCreateCarro)
 app.get('/sucessoCarro', (req, res) => {res.render('sucessoCarro')})
 

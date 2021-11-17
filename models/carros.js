@@ -17,7 +17,6 @@ const carros = sequelize.define('carros', {
     quilometragem : DataTypes.STRING(6),
     cambio : DataTypes.STRING(15),
     preco : DataTypes.FLOAT,
-    foto : DataTypes.STRING(255),
     proprietario : DataTypes.STRING(11),
     blindado : DataTypes.BOOLEAN
 })

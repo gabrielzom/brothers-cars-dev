@@ -1,7 +1,9 @@
 const carros = require('../models/carros')
+
 const sequelize = require('sequelize')
 
 module.exports = (req, res) => {
+
     carros.create({
         montadora : req.body.montadora,
         modelo : (req.body.modelo).toUpperCase(),
@@ -10,7 +12,9 @@ module.exports = (req, res) => {
         anomodelo : req.body.anomodelo,
         anofabricacao : req.body.anofabricacao,
         cor : req.body.cor,
-        blindado : req.body.blindado
+        blindado : req.body.blindado,
+        carroceria : req.body.carroceria,
+        situacao : 0
     })
         .then((carro) => {
             res.render('incluircarro02',

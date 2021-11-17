@@ -1,4 +1,5 @@
 const carros = require('../models/carros')
+const fotosCarros = require('../models/fotosCarros')
 const { Op } = require('sequelize');
 const sequelize = require('sequelize');
 
@@ -60,9 +61,16 @@ module.exports = (req, res) => {
         where: {
            [Op.all]: sequelize.literal(`${localizacao} ${ano} ${preco} ${km}`)
         }
-   
     }).then((carro) => {
-        return res.render('catalogoBuscar', {carros : carro}, console.log('-- correct read'))
+        fotosCarros
+            .findAll()
+            .then((foto) => {
+                return res.render('catalogoBuscar', {
+                    carros : carro,
+                    fotos : foto
+                }, 
+                console.log('-- correct read'))
+            })
     }).catch((err) => {
         console.log('-- incorret read. ' + err
     )})
