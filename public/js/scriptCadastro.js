@@ -11,7 +11,7 @@ $('#inputGroupFile02').on('change', function (){
 
     if ($('#inputGroupFile02').val() == $('#inputGroupFile01').val()) {
 
-        alert('As imagens não podem ser iguais. Selecione outra imagem.')
+        $("#exampleModal").modal("show");
 
         $(document).ready(function(){
             $('#inputGroupFile02').val('');
@@ -22,6 +22,10 @@ $('#inputGroupFile02').on('change', function (){
         $('#inputGroupFile02').next('.custom-file-label').html(fileName)
     }
 })
+
+$(".closeModal").on("click", function(){
+    $("#exampleModal").modal("hide")
+  })
 
 function loadUf() {
 
